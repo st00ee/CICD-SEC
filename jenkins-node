@@ -1,0 +1,24 @@
+# Base image
+FROM jenkins/agent:latest
+
+# Switch to root to install necessary packages
+USER root
+
+# Install Python and pip (assuming apt as the package manager)
+RUN apt-get update && apt-get install -y python3 python3-pip python3-venv
+
+# Create a virtual environment
+RUN python3 -m venv /opt/venv
+
+# Activate the virtual environment and install pre-commit
+RUN /opt/venv/bin/python -m pip install pre-commit
+
+# Set the PATH environment variable to use the virtual environment
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Switch back to the jenkins user
+USER jenkins
+
+CMD ["sh"]
+
+
