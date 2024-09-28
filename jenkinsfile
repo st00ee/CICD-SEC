@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                echo 'Deliver.Maria...'
+                echo 'Deliver.Maria Brniak...'
                 sh '''
                 echo "doing delivery stuff.."
                 '''
